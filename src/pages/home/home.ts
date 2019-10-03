@@ -93,9 +93,13 @@ export class HomePage {
     loading.present()
     .then(() => this.sudokuProvider.getSudoku())
     .then(resp=> this.sudoku =  resp['sudokuSelected'])
-    .then(()=>this.sudokuProvider.adaptData())
     .then(()=>{
       this.isReady = true
+      this.sudoku.map(function (value) {
+        if (value == 0) {
+          value =null;
+        } 
+      });
     })
     .catch(error =>{ 
       console.log(error);
@@ -131,11 +135,10 @@ export class HomePage {
       //this.sudoku = this.initialSudoku;
       this.toastController.create({
         message: `Erro ao tentar resolver o sudoku!!`,
-        duration: 3000,
+        duration: 5000,
         position: 'top'
       }).present()
     })
-    .then(()=>this.sudokuProvider.adaptData())
     .then(() => loading.dismiss().catch(() => { }))
 
   }

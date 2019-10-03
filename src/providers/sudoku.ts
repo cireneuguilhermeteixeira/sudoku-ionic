@@ -506,7 +506,7 @@ export class SudokuProvider {
         return new Promise(resolve => {
             setTimeout(() => resolve({
                 sudokuSelected,
-            }), 1000)
+            }))
           })
     }
 
@@ -540,7 +540,7 @@ export class SudokuProvider {
       }
       return new Promise(resolve => {
         setTimeout(() => resolve({
-        }), 2000)
+        }))
       })
       //list[0].getAttribute("value")
       
