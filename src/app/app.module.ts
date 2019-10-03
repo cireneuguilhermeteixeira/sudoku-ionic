@@ -6,6 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { HttpClientModule } from '@angular/common/http'
+
+
+import {SudokuProvider} from '../providers/sudoku';
 
 @NgModule({
   declarations: [
@@ -13,6 +17,7 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -24,6 +29,7 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    SudokuProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

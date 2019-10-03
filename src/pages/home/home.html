@@ -1,14 +1,361 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-toolbar >
     <ion-title>
-      Ionic Blank
+      Sudoku
     </ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <div class="ion-padding">
+    <h3 class="tutorial">Clique no botão abaixo para gerar um sudoku aleatório do nosso banco.</h3>
+    <div padding style="text-align: center">
+        <button ion-button  full round *ngIf="!isReady"  (click)="generateRandomSudoku()" color="primary">Carregar Sudoku</button>
+    </div>
+
+    <div class="sudoku-container">
+        <ion-card  *ngIf="sudoku">
+            <ion-card-header *ngIf="isReady">
+              Dificuldade: 
+              <ion-chip  color="primary" style="float: right; margin-top: -6px;">
+                <ion-label color="white" >Intermediário</ion-label>
+              </ion-chip>
+            </ion-card-header>
+            <ion-card-content>
+                <table border="0.5" >
+
+                    <tr>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[0][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[0][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[0][0][2]}}"></ion-input>
+                        </td>
+                  
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[1][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[1][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[1][0][2]}}"></ion-input>
+                        </td>
+
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[2][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[2][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[2][0][2]}}"></ion-input>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <ion-input type="text" value="{{sudoku[0][1][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[0][1][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[0][1][2]}}"></ion-input>
+                          </td>
+                    
+        
+                          <td>
+                            <ion-input type="text" value="{{sudoku[1][1][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[1][1][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[1][1][2]}}"></ion-input>
+                          </td>
+        
+        
+                          <td>
+                            <ion-input type="text" value="{{sudoku[2][1][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[2][1][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[2][1][2]}}"></ion-input>
+                          </td>
+
+                    </tr>
+                    
+                    <tr>
+
+                          <td>
+                              <ion-input type="text" value="{{sudoku[0][2][0]}}"></ion-input>
+                            </td>
+                            <td>
+                              <ion-input type="text" value="{{sudoku[0][2][1]}}"></ion-input>
+                            </td>
+                            <td>
+                              <ion-input type="text" value="{{sudoku[0][2][2]}}"></ion-input>
+                            </td>
+                      
+          
+                            <td>
+                              <ion-input type="text" value="{{sudoku[1][2][0]}}"></ion-input>
+                            </td>
+                            <td>
+                              <ion-input type="text" value="{{sudoku[1][2][1]}}"></ion-input>
+                            </td>
+                            <td>
+                              <ion-input type="text" value="{{sudoku[1][2][2]}}"></ion-input>
+                            </td>
+          
+          
+                            <td>
+                              <ion-input type="text" value="{{sudoku[2][2][0]}}"></ion-input>
+                            </td>
+                            <td>
+                              <ion-input type="text" value="{{sudoku[2][2][1]}}"></ion-input>
+                            </td>
+                            <td>
+                              <ion-input type="text" value="{{sudoku[2][2][2]}}"></ion-input>
+                            </td>
+                    </tr>  
+
+
+                    <tr>
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[3][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[3][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[3][0][2]}}"></ion-input>
+                        </td>
+                  
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[4][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[4][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[4][0][2]}}"></ion-input>
+                        </td>
+
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[5][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[5][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[5][0][2]}}"></ion-input>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+
+                    <td>
+                        <ion-input type="text" value="{{sudoku[3][1][0]}}"></ion-input>
+                      </td>
+                      <td>
+                        <ion-input type="text" value="{{sudoku[3][1][1]}}"></ion-input>
+                      </td>
+                      <td>
+                        <ion-input type="text" value="{{sudoku[3][1][2]}}"></ion-input>
+                      </td>
+                
+
+                      <td>
+                        <ion-input type="text" value="{{sudoku[4][1][0]}}"></ion-input>
+                      </td>
+                      <td>
+                        <ion-input type="text" value="{{sudoku[4][1][1]}}"></ion-input>
+                      </td>
+                      <td>
+                        <ion-input type="text" value="{{sudoku[4][1][2]}}"></ion-input>
+                      </td>
+
+
+                      <td>
+                        <ion-input type="text" value="{{sudoku[5][1][0]}}"></ion-input>
+                      </td>
+                      <td>
+                        <ion-input type="text" value="{{sudoku[5][1][1]}}"></ion-input>
+                      </td>
+                      <td>
+                        <ion-input type="text" value="{{sudoku[5][1][2]}}"></ion-input>
+                      </td>
+
+                </tr>
+                  
+                <tr>
+
+                      <td>
+                          <ion-input type="text" value="{{sudoku[3][2][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[3][2][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[3][2][2]}}"></ion-input>
+                        </td>
+                  
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[4][2][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[4][2][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[4][2][2]}}"></ion-input>
+                        </td>
+
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[5][2][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[5][2][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[5][2][2]}}"></ion-input>
+                        </td>
+
+                    </tr> 
+
+
+                    <tr>
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[6][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[6][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[6][0][2]}}"></ion-input>
+                        </td>
+                  
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[7][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[7][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[7][0][2]}}"></ion-input>
+                        </td>
+
+
+                        <td>
+                          <ion-input type="text" value="{{sudoku[8][0][0]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[8][0][1]}}"></ion-input>
+                        </td>
+                        <td>
+                          <ion-input type="text" value="{{sudoku[8][0][2]}}"></ion-input>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <ion-input type="text" value="{{sudoku[6][1][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[6][1][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[6][1][2]}}"></ion-input>
+                          </td>
+                    
+        
+                          <td>
+                            <ion-input type="text" value="{{sudoku[7][1][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[7][1][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[7][1][2]}}"></ion-input>
+                          </td>
+        
+        
+                          <td>
+                            <ion-input type="text" value="{{sudoku[8][1][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[8][1][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[8][1][2]}}"></ion-input>
+                          </td>
+
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <ion-input type="text" value="{{sudoku[6][2][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[6][2][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[6][2][2]}}"></ion-input>
+                          </td>
+                    
+        
+                          <td>
+                            <ion-input type="text" value="{{sudoku[7][2][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[7][2][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[7][2][2]}}"></ion-input>
+                          </td>
+        
+        
+                          <td>
+                            <ion-input type="text" value="{{sudoku[8][2][0]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[8][2][1]}}"></ion-input>
+                          </td>
+                          <td>
+                            <ion-input type="text" value="{{sudoku[8][2][2]}}"></ion-input>
+                          </td>
+                    </tr>  
+                </table>
+                <div padding style="text-align: center">
+                    <button ion-button  full round [disabled]="!isReady" (click)="solveSudokuFromApi(sudoku)" color="secondary">Resolver</button>
+                </div>
+                <div padding style="text-align: center">
+                    <button ion-button  full round *ngIf="isReady"  (click)="generateRandomSudoku()" color="primary">Procurar mais um Sudoku</button>
+                </div>
+            </ion-card-content>
+             
+        </ion-card>
+      </div>
+  </div>
 </ion-content>
