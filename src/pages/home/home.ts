@@ -81,7 +81,7 @@ export class HomePage {
     this.sudoku = this.initialSudoku;
   }
 
-  generateRandomSudoku(){
+  getRandomSudoku(){
     let loading = this.loadingController.create({
       content: 'Buscando o sudoku...',
       spinner: 'dots',
@@ -92,9 +92,11 @@ export class HomePage {
 
     loading.present()
     .then(() => this.sudokuProvider.getSudoku())
-    .then(resp=>this.sudoku =  resp['sudokuSelected'])
-    .then(()=>this.isReady = true)
-
+    .then(resp=> this.sudoku =  resp['sudokuSelected'])
+    .then(()=>this.sudokuProvider.adaptData())
+    .then(()=>{
+      this.isReady = true
+    })
     .catch(error =>{ 
       console.log(error);
       
@@ -110,6 +112,7 @@ export class HomePage {
   }
 
 
+ 
   
   solveSudokuFromApi(sudoku){
     let loading = this.loadingController.create({
@@ -125,7 +128,6 @@ export class HomePage {
     .then(resp=>this.sudoku =  resp['sudokuSolved'])
     .catch(error => {
       console.log(error);
-      
       //this.sudoku = this.initialSudoku;
       this.toastController.create({
         message: `Erro ao tentar resolver o sudoku!!`,
@@ -133,6 +135,7 @@ export class HomePage {
         position: 'top'
       }).present()
     })
+    .then(()=>this.sudokuProvider.adaptData())
     .then(() => loading.dismiss().catch(() => { }))
 
   }

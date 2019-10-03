@@ -506,7 +506,7 @@ export class SudokuProvider {
         return new Promise(resolve => {
             setTimeout(() => resolve({
                 sudokuSelected,
-            }), 2000)
+            }), 1000)
           })
     }
 
@@ -520,5 +520,31 @@ export class SudokuProvider {
         })
     }
 
+
+    adaptData(){
+
+      var list = document.getElementsByTagName("ion-input");
+      var input;
+      for (var i = list.length - 1; i >= 0; i--) {
+        input = parseInt(list[i].getAttribute("ng-reflect-value"));
+        console.log(input);
+        
+        if(input != 0){
+            list[i].setAttribute("readonly", "true");
+            list[i].children[0].setAttribute("readonly", "true");
+            list[i].setAttribute("id", "initial-value");
+            list[i].children[0].setAttribute("id", "initial-value");
+  
+        }
+        
+      }
+      return new Promise(resolve => {
+        setTimeout(() => resolve({
+        }), 2000)
+      })
+      //list[0].getAttribute("value")
+      
+      
+    }
   
 }
