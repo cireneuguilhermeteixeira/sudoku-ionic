@@ -516,6 +516,7 @@ export class SudokuProvider {
         return this.http.post(url,JSON.stringify(sudoku), {headers: { 'Content-Type': 'application/json' }})
         .toPromise()
         .then((data: any) => {
+          console.log(data);
             return data;
         })
     }

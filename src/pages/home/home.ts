@@ -122,7 +122,7 @@ export class HomePage {
 
     loading.present()
     .then(() => this.sudokuProvider.solveSudoku(sudoku))
-    .then(resp=>this.sudoku =  resp['sudokuSolved'])
+    .then(resp=>this.sudoku =  resp)
     .catch(error => {
       console.log(error);
       
