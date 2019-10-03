@@ -513,7 +513,7 @@ export class SudokuProvider {
     
     public solveSudoku(sudoku) {
         const url = `${environmentVars.apiUrl}/solve`
-        return this.http.post(url,sudoku)
+        return this.http.post(url,JSON.stringify(sudoku), {headers: { 'Content-Type': 'application/json' }})
         .toPromise()
         .then((data: any) => {
             return data;
