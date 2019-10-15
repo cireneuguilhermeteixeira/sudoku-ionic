@@ -95,11 +95,7 @@ export class HomePage {
     .then(resp=> this.sudoku =  resp['sudokuSelected'])
     .then(()=>{
       this.isReady = true
-      this.sudoku.map(function (value) {
-        if (value == 0) {
-          value =null;
-        } 
-      });
+      
     })
     .catch(error =>{ 
       console.log(error);
@@ -112,7 +108,7 @@ export class HomePage {
         position: 'top'
       }).present()
     })
-    .then(() => loading.dismiss().catch(() => { }))
+    //.then(() => loading.dismiss().catch(() => { }))
   }
 
 
@@ -122,14 +118,18 @@ export class HomePage {
     let loading = this.loadingController.create({
       content: 'Aplicando heuristica para resolver o sudoku... Não desligue seu computador, isso pode levar um tempo!',
       spinner: 'dots',
-      cssClass: 'my-loading-class',
-      duration: 5000
-
+      cssClass: 'my-loading-class'
     })
 
     loading.present()
     .then(() => this.sudokuProvider.solveSudoku(sudoku))
-    .then(resp=>this.sudoku =  resp['sudokuSolved'])
+    .then(resp=>{
+      if(resp){
+        this.sudoku =  resp;
+        loading.dismiss()
+      }
+      
+    })
     .catch(error => {
       console.log(error);
       //this.sudoku = this.initialSudoku;
@@ -139,7 +139,7 @@ export class HomePage {
         position: 'top'
       }).present()
     })
-    .then(() => loading.dismiss().catch(() => { }))
+    //.catch(() => loading.dismiss())
 
   }
 }

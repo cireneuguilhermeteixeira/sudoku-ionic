@@ -4,7 +4,7 @@ const environment = {
     apiUrl: 'https://sudokuic.herokuapp.com',
   },
   test: {
-    apiUrl: 'http://localhost',
+    apiUrl: 'http://localhost:5000',
   }
 }
 
